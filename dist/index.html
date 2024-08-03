@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Design Portfolio 2024</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timo Butler Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <h1>Timo Butler</h1>
+                <ul>
+                    <li><a href="#" onclick="showMainPage()" class="active">Work</a></li>
+                    <li><a href="#" onclick="showProject('ark')">Ark</a></li>
+                    <li><a href="#" onclick="showProject('please-dont-lie')">Please Don't Lie</a></li>
+                    <li><a href="#" onclick="showProject('revival-history')">Revival History</a></li>
+                    <li><a href="#" onclick="showProject('overthrow')">Overthrow</a></li>
+                    <li><a href="#" onclick="showProject('archaic')">Archaic</a></li>
+                    <li><a href="#" onclick="showProject('the-send')">The Send</a></li>
+                    <li><a href="#" onclick="showProject('carry-the-love')">Carry The Love</a></li>
+                    <li><a href="#" onclick="showProject('contact')">Contact</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                    <a href="#" onclick="showProject('contact')"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="main-content" id="main-content">
+                <div class="projects-grid">
+                    <div class="project" onclick="showProject('ark')">
+                        <img src="path/to/your/image1.jpg" alt="Ark">
+                    </div>
+                    <div class="project" onclick="showProject('please-dont-lie')">
+                        <img src="path/to/your/image2.jpg" alt="Please Don't Lie">
+                    </div>
+                    <div class="project" onclick="showProject('revival-history')">
+                        <img src="path/to/your/image3.jpg" alt="Revival History">
+                    </div>
+                    <div class="project" onclick="showProject('overthrow')">
+                        <img src="path/to/your/image4.jpg" alt="Overthrow">
+                    </div>
+                    <div class="project" onclick="showProject('archaic')">
+                        <img src="path/to/your/image5.jpg" alt="Archaic">
+                    </div>
+                    <div class="project" onclick="showProject('the-send')">
+                        <img src="path/to/your/image6.jpg" alt="The Send">
+                    </div>
+                    <div class="project" onclick="showProject('carry-the-love')">
+                        <img src="path/to/your/image7.jpg" alt="Carry The Love">
+                    </div>
+                    <!-- Add more project divs as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ark" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image1.jpg" alt="Ark Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="please-dont-lie" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image2.jpg" alt="Please Don't Lie Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="revival-history" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image3.jpg" alt="Revival History Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overthrow" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image4.jpg" alt="Overthrow Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="archaic" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image5.jpg" alt="Archaic Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="the-send" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image6.jpg" alt="The Send Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="carry-the-love" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="aspect-ratio-box">
+                    <img src="path/to/your/detail-image7.jpg" alt="Carry The Love Detail">
+                </div>
+                <div class="project-brief">
+                    <h3>Project Brief</h3>
+                    <p>Brief description of the project goals and requirements.</p>
+                </div>
+                <div class="project-description">
+                    <p>Detailed description of the project, including concepts, design choices, and outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="project-detail">
+        <div class="scroll-wrapper">
+            <div class="project-detail-content">
+                <span class="close-button" onclick="closeProject()">×</span>
+                <div class="project-description">
+                    <h2>Contact</h2>
+                    <p>You can reach me at <a href="mailto:butlertimo@gmail.com">butlertimo@gmail.com</a> or follow me on social media.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
