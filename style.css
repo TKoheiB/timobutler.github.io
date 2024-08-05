@@ -109,7 +109,7 @@ body.no-scroll {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Set max columns to 2 */
-    gap: 20px;
+    gap: 7px;
 }
 
 .project {
