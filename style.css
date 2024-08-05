@@ -4,6 +4,7 @@ body, html {
     font-family: Arial, sans-serif;
     background-color: #000;
     color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 body.no-scroll {
