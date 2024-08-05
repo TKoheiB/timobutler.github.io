@@ -15,21 +15,60 @@ body.no-scroll {
     justify-content: center; /* Center the container horizontally */
 }
 
+.header {
+    display: none; /* Hide header by default */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Reduce padding */
+    background-color: #000;
+    width: 100%;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.header a, .sidebar a {
+    color: inherit; /* Inherit the color from the parent element */
+    text-decoration: none; /* Remove underline */
+}
+
 .content-wrapper {
     display: flex;
-    max-width: 85%; /* Set max-width to 85% of the viewport */
+    max-width: 90%; /* Set max-width to 85% of the viewport */
     width: 100%;
-    margin: 0 7.5%; /* Set margins to ensure centered content */
 }
 
 .sidebar {
     width: 200px;
-    padding: 20px;
+    padding-top: 20px;
     background-color: #000;
     height: 100vh;
     overflow-y: auto;
     position: fixed;
-    left: 7.5%; /* Margin on the left */
+    margin-left: 1%; /* Add left margin to match right margin */
+    transition: transform 0.3s ease; /* Add transition for smooth toggle */
+    transform: translateX(0); /* Default position */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Hide sidebar on mobile */
+}
+
+.sidebar.visible {
+    transform: translateX(0%); /* Show sidebar */
 }
 
 .sidebar h1 {
@@ -62,13 +101,13 @@ body.no-scroll {
 .main-content {
     flex: 1;
     padding: 20px;
-    margin-left: calc(200px + 40px); /* Adjusted for sidebar width + padding */
+    margin-left: 20%;
     overflow: hidden; /* Prevent independent scrolling */
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 1fr)); /* Set max columns to 2 */
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Set max columns to 2 */
     gap: 20px;
 }
 
@@ -93,14 +132,15 @@ body.no-scroll {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Ensures the image covers the entire project area */
+    max-width: 100%;
 }
 
 .project-detail {
     display: none;
     position: fixed;
     top: 0;
-    left: calc(200px + 40px + 7.5%); /* Match the left margin of the main content */
-    right: 7.5%; /* Adjusted for right margin */
+    left: 23%;
+    right: 4.3%; /* Adjusted for right margin */
     bottom: 0;
     background-color: #000;
 }
@@ -149,8 +189,8 @@ body.no-scroll {
     background: transparent; /* Adjust background if needed */
     border: none; /* Remove any border */
     z-index: 10; /* Ensure it stays on top */
-  
 }
+
 .social-icons {
     margin-top: 20px;
     display: flex;
@@ -218,17 +258,25 @@ body.no-scroll {
 @media (max-width: 1200px) {
     .content-wrapper {
         max-width: 90%;
-        margin: 0 5%;
+        margin: 0 0;
     }
 
     .project-detail {
-        left: calc(200px + 5%);
-        right: 5%;
+        left: 23%;
+        right: 4.3%;
     }
 
     .project-detail-content {
         max-width: 100%;
         padding: 20px;
+    }
+
+    .sidebar {
+        left: 5%; /* Adjusted for smaller screens */
+    }
+
+    .main-content {
+        margin-left: 20%;
     }
 }
 
@@ -238,8 +286,12 @@ body.no-scroll {
         margin: 0 2.5%;
     }
 
+   .projects-grid {
+        grid-template-columns: 1fr; /* Stack items in a single column */
+    }
+  
     .project-detail {
-        left: calc(200px + 2.5%);
+        left: 24%;
         right: 2.5%;
     }
 
@@ -247,21 +299,89 @@ body.no-scroll {
         max-width: 100%;
         padding: 20px;
     }
+
+    .sidebar {
+        left: 2%; /* Adjusted for smaller screens */
+    }
+
+    .main-content {
+        margin-left: 23%;
+    }
 }
 
 @media (max-width: 600px) {
+    .header {
+        display: flex; /* Display header on small screens */
+        flex-direction: row;
+        justify-content: space-between; /* Space out the items */
+        align-items: center; /* Center items vertically */
+    }
+
+    .hamburger {
+        display: block;
+        align-self: center; /* Align the hamburger to the right */
+        padding-right: 11%; /* Add some margin to align it with the thumbnails */
+        padding-top: 5px;
+        z-index: 1001;
+    }
+
     .content-wrapper {
         max-width: 100%;
         margin: 0;
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    .sidebar {
+        width: 100%;
+      padding-top: 1.5px;
+      background-color: #000;
+      height: 100vh;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 14px; /* Change to 0 to ensure it covers the full screen width */
+      opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+      z-index: 1000; /* Ensure the sidebar appears above other content */
+}
+  
+    .sidebar.visible {
+        opacity: 1; /* Show sidebar */
+        visibility: visible; /* Make sidebar visible */
+    }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 0px; /* Adjusted to be 0px */
+    cursor: pointer;
+    font-size: 24px;
+    color: #000; /* Adjust color if needed */
+    background: transparent; /* Adjust background if needed */
+    border: none; /* Remove any border */
+    z-index: 10; /* Ensure it stays on top */
+}
+
+    .main-content {
+        margin-left: 0;
+        width: 95%;
+        padding-top: 0; /* Remove extra padding */
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack items in a single column */
+        margin-right: 20px;
     }
 
     .project-detail {
-        left: 200px;
-        right: 0;
+        top: 40px;
+        left: 0;
+        width: 99%;
     }
 
-    .project-detail-content {
-        max-width: 100%;
-        padding: 20px;
+    .main-content {
+        padding-top: 0px; /* Add padding to the top of the main content */
+        margin-top: 10px; /* Add margin to the top of the main content */
     }
 }
