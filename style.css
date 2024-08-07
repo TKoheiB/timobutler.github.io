@@ -1,0 +1,436 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+}
+
+.header {
+    display: none; /* Hide header by default */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Reduce padding */
+    background-color: #000;
+    width: 100%;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.header a, .sidebar a{
+    color: inherit; /* Inherit the color from the parent element */
+    text-decoration: none; /* Remove underline */
+}
+
+.project-description a {
+    color: #4CAF50;
+}
+
+.content-wrapper {
+    display: flex;
+    max-width: 90%; /* Set max-width to 85% of the viewport */
+    width: 100%;
+}
+
+.sidebar {
+    width: 200px;
+    padding-top: 20px;
+    background-color: #000;
+    height: 100vh;
+    overflow-y: auto;
+    position: fixed;
+    margin-left: 1%; /* Add left margin to match right margin */
+    transition: transform 0.3s ease; /* Add transition for smooth toggle */
+    transform: translateX(0); /* Default position */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%); /* Hide sidebar on mobile */
+}
+
+.sidebar.visible {
+    transform: translateX(0%); /* Show sidebar */
+}
+
+.sidebar h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    color: #4CAF50; /* Change color to green on hover */
+}
+
+.sidebar ul li a.active {
+    color: #4CAF50;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 20%;
+    overflow: hidden; /* Prevent independent scrolling */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Set max columns to 2 */
+    gap: 7px;
+}
+
+.project {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    position: relative; /* Required for the aspect ratio trick */
+}
+
+.project::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
+}
+
+.project img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire project area */
+    max-width: 100%;
+}
+
+.project-detail {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 23%;
+    right: 4.3%; /* Adjusted for right margin */
+    bottom: 0;
+    background-color: #000;
+}
+
+.scroll-wrapper {
+    height: 100%;
+    overflow-y: auto; /* This property controls the vertical scrollbar */
+    padding-right: 10%; /* Add padding to move the scrollbar right */
+    margin-right: -10%; /* Negative margin to offset the padding */
+}
+
+.project-detail-content {
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in element width */
+}
+
+.project-detail .aspect-ratio-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    margin-bottom: 10px; /* Space between the image and the text */
+}
+
+.aspect-ratio-box-2 {
+    position: relative;
+    width: 100%;
+    padding-top: 125%; /* 16:9 aspect ratio */
+    margin-bottom: 10px; /* Space between the image and the text */
+}
+
+.image-row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px; /* Space between the image and the text */
+    gap: 10px;
+}
+
+.image-container {
+    flex: 1;
+    margin: 0 0px; /* Add some spacing between images */
+    align-items: stretch;
+    position: relative; /* Ensure absolutely positioned elements are relative to this container */
+    overflow: hidden;
+}
+
+.image-container::before {
+    content: "";
+    display: block;
+    padding-top: 120%; /* Maintain a square aspect ratio for the container */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-detail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-brief, .project-description {
+    max-width: 100%; /* Ensure the text fits within the margins */
+    margin: 20px 0;
+    font-size: 16px; /* Adjust the size as needed */
+    line-height: 1.5; /* Optional: Adjust the line height for better readability */
+}
+
+h3 {
+    font-size: 20px; /* Adjust the size as needed */
+    margin-bottom: 10px; /* Adjust the spacing as needed */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 0px; /* Adjusted to be 0px */
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff; /* Adjust color if needed */
+    background: transparent; /* Adjust background if needed */
+    border: none; /* Remove any border */
+    z-index: 10; /* Ensure it stays on top */
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 130px; /* Adjust width as needed */
+}
+
+.social-icons a {
+    color: #fff; /* Ensure the icons appear white */
+    font-size: 15px; /* Adjust the size of the icons */
+    text-decoration: none; /* Remove underline from icons */
+}
+
+.social-icons a:last-child {
+    margin-right: 0; /* Remove the margin from the last icon */
+}
+
+.social-icons a:hover {
+    color: #4CAF50; /* Change color to green on hover */
+}
+
+/* Custom Scrollbar for WebKit Browsers */
+.scroll-wrapper::-webkit-scrollbar {
+    width: 9px; /* Width of the entire scrollbar */
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+    background: #000; /* Background color of the scrollbar track */
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #000; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Roundness of the scrollbar thumb */
+    border: 1px solid #333; /* Space around the thumb */
+}
+
+/* Custom Scrollbar for Firefox */
+.scroll-wrapper {
+    scrollbar-width: thin; /* Width of the entire scrollbar */
+    scrollbar-color: #000 #000; /* Thumb color and track color */
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 9px; /* Width of the entire scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #000; /* Background color of the scrollbar track */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #000; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Roundness of the scrollbar thumb */
+    border: 1px solid #000; /* Space around the thumb */
+}
+
+/* Custom Scrollbar for Firefox */
+.sidebar {
+    scrollbar-width: thin; /* Width of the entire scrollbar */
+    scrollbar-color: #4CAF50 #000; /* Thumb color and track color */
+}
+
+/* Media Queries for Responsive Margins */
+@media (max-width: 1200px) {
+    .content-wrapper {
+        max-width: 90%;
+        margin: 0 0;
+    }
+
+    .project-detail {
+        left: 23%;
+        right: 4.3%;
+    }
+
+    .project-detail-content {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .sidebar {
+        left: 5%; /* Adjusted for smaller screens */
+    }
+
+    .main-content {
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 800px) {
+    .content-wrapper {
+        max-width: 95%;
+        margin: 0 2.5%;
+    }
+
+   .projects-grid {
+        grid-template-columns: 1fr; /* Stack items in a single column */
+    }
+  
+    .project-detail {
+        left: 24%;
+        right: 2.5%;
+    }
+
+    .project-detail-content {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .sidebar {
+        left: 2%; /* Adjusted for smaller screens */
+    }
+
+    .main-content {
+        margin-left: 23%;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        display: flex; /* Display header on small screens */
+        flex-direction: row;
+        justify-content: space-between; /* Space out the items */
+        align-items: center; /* Center items vertically */
+    }
+
+    .hamburger {
+        display: block;
+        align-self: center; /* Align the hamburger to the right */
+        padding-right: 11%; /* Add some margin to align it with the thumbnails */
+        padding-top: 15px;
+        z-index: 1001;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        margin: 0;
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    .sidebar {
+        width: 100%;
+      padding-top: 6px;
+      background-color: #000;
+      height: 100vh;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 14px; /* Change to 0 to ensure it covers the full screen width */
+      opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+      z-index: 1000; /* Ensure the sidebar appears above other content */
+}
+  
+    .sidebar.visible {
+        opacity: 1; /* Show sidebar */
+        visibility: visible; /* Make sidebar visible */
+    }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 0px; /* Adjusted to be 0px */
+    cursor: pointer;
+    font-size: 24px;
+    color: #000; /* Adjust color if needed */
+    background: transparent; /* Adjust background if needed */
+    border: none; /* Remove any border */
+    z-index: 10; /* Ensure it stays on top */
+}
+
+    .main-content {
+        margin-left: 0;
+        width: 95%;
+        padding-top: 0; /* Remove extra padding */
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack items in a single column */
+        margin-right: 20px;
+    }
+
+    .project-detail {
+        top: 40px;
+        left: 0;
+        width: 99%;
+    }
+
+    .main-content {
+        padding-top: 0px; /* Add padding to the top of the main content */
+        margin-top: 10px; /* Add margin to the top of the main content */
+    }
+}
